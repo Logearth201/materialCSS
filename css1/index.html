@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=480,initial-scale=1.0,minimum-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="tr1.css" type="text/css" />
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+<!-- カスタマイズポイント
+	//大変わかりずらい変数の名前を使っているのは、競合対策のためです。変数の名前は絶対に変更しないでください。
+	var dwzt_cssmaterial_nonnonloggatukuttanndayo_timegap = 50;
+	
+//-->
+</script>
+
+
+<title>地球科学研究部</title>
+</head>
+<body>
+<canvas id="donotusebylog_logmaterialbackview_001"></canvas>
+<script async type="text/javascript" src="starshine.js"></script>
+
+<div id="top">
+   <div id="header">
+      <a href="index.html">Javascript 課題解答(JQueryは使用していません)</a>
+      <div class="pr">
+      	
+      </div>
+   </div><!-- header end -->
+   <div id="menu">
+      <ul>
+      <li><a href="index.html">TOP</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="game.html">Game</a></li>
+      <li><a href="article.html">ARTICLE</a></li>
+      <li><a href="review.html">Review</a></li>
+      <li><a href="otherinfo.html">Others</a></li>
+      <li><a href="link.html">LINK</a></li>
+      <li><a href="bulletin.html">掲示板</a></li>
+      </ul>
+   </div><!-- menu end -->
+   <div id="contents">
+      <div id="main">
+         <h2>良かれと思って答えを用意したサイトへようこそ！</h2>
+         当サイトでは理科大の回答を良かれと思って展示しております。良かれと思った方は、ぜひとも回答を良かれと
+         思いながら使用してください。なお、これは理科大の先生の前では基本的には伏せてください。
+         そして、このサイトくらいの技術は作れることを希望してください。<br><br>
+         <br>
+         HTMLソース：
+         <pre><code>&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;JAVA スクリプト&lt;/title&gt;
+	&lt;script type="text/javascript"&gt;
+	&lt;-- //ここは必要。もしJavascript非対応ブラウザを相手するなら。普通headerに書くか別ソースにするはず
+	var KIROKU1 = 0;
+	var KIROKU2 = 0;
+	function MYKANSU1(){
+		today = new Date();
+		jyanken = new Array("グー","チョキ","パー");
+		//ANATA = eval(document.MYFORM.KOTAE.value); ←parseIntを使おうね☆
+		ANATA = parseInt(document.MYFORM.KOTAE.value);//クラスの皆には内緒だよ☆
+		WATASHI = Math.floor(Math.random() * 3);//改変場所
+		document.MYFORM.KAZU1.value = jyanken[ANATA];
+		document.MYFORM.KAZU2.value = jyanken[WATASHI];
+		if(ANATA - WATASHI == 0){//イコールは３つの方がいい。以降同様。
+			document.MYFORM.KAZU3.value ="引き分け";
+		}else if(ANATA - WATASHI == -1 || ANATA - WATASHI == 2){
+			document.MYFORM.KAZU3.value ="あなたの勝ち";
+			KIROKU1++;
+		}else{
+			document.MYFORM.KAZU3.value ="あなたの負け";
+			KIROKU2++;
+		}
+		document.MYFORM.KAZU4.value = KIROKU1;
+		document.MYFORM.KAZU5.value = KIROKU2;
+	}
+	function MYKANSU2(){
+		KIROKU1 = 0;
+		KIROKU2 = 0;
+		document.MYFORM.KAZU1.value = "";
+		document.MYFORM.KAZU2.value = "";
+		document.MYFORM.KAZU3.value = "";
+		document.MYFORM.KAZU4.value = KIROKU1;
+		document.MYFORM.KAZU5.value = KIROKU2;
+	}
+	//--&gt;
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body bgcolor="#FFFFFF"&gt;
+	&lt;form name="myform"&gt;
+		&lt;select name="kotae"&gt;
+			&lt;option value="0"&gt;グー&lt;/option&gt;
+			&lt;option value="1"&gt;チョキ&lt;/option&gt;
+			&lt;option value="2"&gt;パー&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;input type="button" value="じゃんけん" onclick=mykansu1()&gt;
+		&lt;input type="button" value="リセット"   onclick=mykansu2()&gt;
+		&lt;br&gt;&lt;br&gt;
+		あなた:&lt;input type="text" name="kazu1"&gt;
+		コンピュータ(まどか):&lt;input type="text" name="kazu2"&gt;
+		判 定:&lt;input type="text" name="kazu3"&gt;&lt;br&gt;
+		あなたの勝った回数:&lt;input type="text" name="kazu4"&gt;
+		コンピュータ(まどか)の勝った回数:&lt;input type="text" name="kazu5"&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+         
+         <h3>つっこみどころ</h3>
+         <h4>evalを変数変換に使うか？</h4>
+         MDNはこう言っていた。evalを使わないでください！（びっくりマークです）。<br>
+         eval() は、呼び出した者の権限と共に渡されたコードを実行する危険な関数です。もし eval() を悪意ある者の影響を受けたかもしれない文字列とともに実行すると、終には webpage / extension のパーミッションで、ユーザーのマシン上で悪意あるコードを実行する羽目になるかもしれません。
+         <br><br>
+         リンク：<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/eval">eval() MDN</a>
+         <br><br>このプログラムについてはevalは大丈夫だが、evalを使う癖が出ると、これこそ脆弱性の塊を書いてしまう。
+         テキストエリアに文字列を入力してevalで数値変換するのは、狂気の沙汰でしかない。これで脆弱性など簡単につける。
+         
+         <h4></h4>
+         
+         
+         <h3>コンテンツリスト</h3>
+         <table width = "95%">
+         	<tr><td><a href="about.html">当サイトについて</a></td><td>当サイトがどういうところか、ここに掲載しています。</td></tr>
+         	<tr><td><a href="game.html">課題１解答</a></td><td>Javascript製のゲームがあります。</td></tr>
+         	<tr><td><a href="tool.html">課題２解答</a></td><td>ブラウザ上でできる便利ツールです。ダウンロード不要。</td></tr>
+         </table>
+      </div>
+      <!-- main end ここまで！-->
+      <div id="sub">
+	      
+      </div><!-- subR end -->
+   </div><!-- contents end -->
+   <div id="footer">
+      <div class="copyright">Copyright &copy; 2015 log All Rights Reserved.</div>
+   </div><!-- footer end -->
+</div><!-- top end -->
+</body>
+</html>
